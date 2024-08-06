@@ -178,14 +178,14 @@ def main():
 
     # --- Page Config ---
     st.set_page_config(
-        page_title="The OmniChat",
-        page_icon="🤖",
+        page_title="ChromeTech Chat",
+        page_icon="♾️",
         layout="centered",
         initial_sidebar_state="expanded",
     )
 
     # --- Header ---
-    st.html("""<h1 style="text-align: center; color: #6ca395;">🤖 <i>The OmniChat</i> 💬</h1>""")
+    st.html("""<h1 style="text-align: center; color: #6ca395;">♾️ <i>ChromeTech Chat</i> ♾️</h1>""")
 
     # --- Side Bar ---
     with st.sidebar:
@@ -193,32 +193,25 @@ def main():
         with cols_keys[0]:
             default_openai_api_key = os.getenv("OPENAI_API_KEY") if os.getenv("OPENAI_API_KEY") is not None else ""  # only for development environment, otherwise it should return None
             with st.popover("🔐 OpenAI"):
-                openai_api_key = st.text_input("Introduce your OpenAI API Key (https://platform.openai.com/)", value=default_openai_api_key, type="password")
+                openai_api_key = st.text_input("Enter your OpenAI API Key (https://platform.openai.com/)", value=default_openai_api_key, type="password")
         
         with cols_keys[1]:
             default_google_api_key = os.getenv("GOOGLE_API_KEY") if os.getenv("GOOGLE_API_KEY") is not None else ""  # only for development environment, otherwise it should return None
             with st.popover("🔐 Google"):
-                google_api_key = st.text_input("Introduce your Google API Key (https://aistudio.google.com/app/apikey)", value=default_google_api_key, type="password")
+                google_api_key = st.text_input("Enter your Google API Key (https://aistudio.google.com/app/apikey)", value=default_google_api_key, type="password")
 
         default_anthropic_api_key = os.getenv("ANTHROPIC_API_KEY") if os.getenv("ANTHROPIC_API_KEY") is not None else ""
         with st.popover("🔐 Anthropic"):
-            anthropic_api_key = st.text_input("Introduce your Anthropic API Key (https://console.anthropic.com/)", value=default_anthropic_api_key, type="password")
+            anthropic_api_key = st.text_input("Enter your Anthropic API Key (https://console.anthropic.com/)", value=default_anthropic_api_key, type="password")
     
     # --- Main Content ---
     # Checking if the user has introduced the OpenAI API Key, if not, a warning is displayed
     if (openai_api_key == "" or openai_api_key is None or "sk-" not in openai_api_key) and (google_api_key == "" or google_api_key is None) and (anthropic_api_key == "" or anthropic_api_key is None):
         st.write("#")
-        st.warning("⬅️ Please introduce an API Key to continue...")
+        st.warning("⬅️ Please enter an API Key to continue...")
 
         with st.sidebar:
-            st.write("#")
-            st.write("#")
-            st.video("https://www.youtube.com/watch?v=7i9j8M_zidA")
-            st.write("📋[Medium Blog: OpenAI GPT-4o](https://medium.com/@enricdomingo/code-the-omnichat-app-integrating-gpt-4o-your-python-chatgpt-d399b90d178e)")
-            st.video("https://www.youtube.com/watch?v=1IQmWVFNQEs")
-            st.write("📋[Medium Blog: Google Gemini](https://medium.com/@enricdomingo/how-i-add-gemini-1-5-pro-api-to-my-app-chat-with-videos-images-and-audios-f42171606143)")
-            st.video("https://www.youtube.com/watch?v=kXIOazjgV-8")
-            st.write("📋[Medium Blog: Anthropic Claude 3.5](https://medium.com/p/7ec4623e2dac)")
+            st.write("Made by ChromeTech")
 
     else:
         client = OpenAI(api_key=openai_api_key)
