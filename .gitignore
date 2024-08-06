@@ -1,3 +1,4 @@
 .env
 /venv
 __pycache__
+/GPT4-o/.env
